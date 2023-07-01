@@ -1,0 +1,98 @@
+# Global parameter defaults
+path: ./dist
+url: http://tedo.local
+user: idl.admin
+
+disabled_commands:
+  - db drop
+
+skip-themes:
+  - twentytwenty
+  - twentynineteen
+  - twentyseventeen
+
+core download:
+  locale: en_US
+
+config create:
+  dbname: wp_tedo
+  dbuser: root
+  dbpass: root
+  dbhost: localhost
+  dbprefix: ted_
+  extra-php: |
+    define( 'WP_DEBUG', true );
+    define( 'WP_POST_REVISIONS', 10 );
+    define( 'DISALLOW_FILE_EDIT', true);
+    define( 'WPCF7_AUTOP', false );
+    define( 'WP_ENV', 'local');
+
+core install:
+  url: idl.local
+  title: ""
+  admin_user: idl.admin
+  admin_password: admin
+  admin_email: m.usikov@indevlab.com
+
+language core install:
+  - ru_RU
+  - uk
+language core activate:
+  - ru_RU
+
+post delete:
+  - 1
+  - 2
+  force: true
+
+theme delete:
+  - twentytwenty
+  - twentynineteen
+  - twentyseventeen
+
+plugin delete:
+  - hello
+
+plugin install:
+  - akismet
+  - all-in-one-wp-security-and-firewall
+  - wp-super-cache
+  - wp-migrate-db
+  - wordpress-importer
+  - loco-translate
+  - polylang
+  - query-monitor
+  - duplicate-post
+  - cyr3lat
+  - contact-form-7
+  - no-category-base-wpml
+  - custom-post-type-permalinks
+  - wp-mail-smtp
+  - regenerate-thumbnails
+  - google-sitemap-generator
+  - redirection
+  - wp-smushit
+
+plugin activate:
+  - wp-migrate-db
+  - cyr3lat
+  - query-monitor
+
+
+db export:
+  - ./db/tedo.local.sql
+  add-drop-table: true
+
+db import:
+  - ./db/tedo.local.sql
+
+search-replace:
+  - http://tedo.local
+  - http://tedo.dev.indevlab.com
+  export: ./db/tedo.sql
+
+user create:
+  - idl.developer
+  - idl.developer@example.com
+  role: administrator
+  user_pass: password
